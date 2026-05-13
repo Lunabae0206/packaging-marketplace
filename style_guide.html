@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[LOGO] — Design System & Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Core Palette ── */
+  --ink:       #0D1117;
+  --ink-80:    #24292F;
+  --ink-50:    #57606A;
+  --ink-20:    #8C959F;
+  --rule:      #E8EBEE;
+  --surface:   #F6F8FA;
+  --white:     #FFFFFF;
+
+  /* ── Brand: Teal ── */
+  --teal:      #0D9A7F;
+  --teal-dark: #0A7A65;
+  --teal-deep: #085041;
+  --teal-mid:  #4DB8A9;
+  --teal-lt:   #E6F6F2;
+
+  /* ── Accent: Amber ── */
+  --amber:     #F0A500;
+  --amber-lt:  #FFF8E7;
+
+  /* ── Accent: Blue ── */
+  --blue:      #1A73E8;
+  --blue-lt:   #EBF3FF;
+
+  /* ── Status ── */
+  --green:     #22C55E;
+  --red:       #EF4444;
+  --orange:    #F97316;
+
+  /* ── Radii ── */
+  --r4:  4px;  --r8: 8px;   --r12: 12px;
+  --r16: 16px; --r24: 24px; --r99: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.10), 0 4px 8px rgba(0,0,0,.06);
+
+  /* ── Typography ── */
+  --font-display: 'DM Serif Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--ink); background: var(--surface); -webkit-font-smoothing: antialiased; }
+
+/* ─── LAYOUT ─── */
+.sg-shell { display: flex; min-height: 100vh; }
+
+.sg-nav {
+  width: 220px; flex-shrink: 0;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  background: var(--ink); padding: 28px 0;
+  border-right: 1px solid rgba(255,255,255,.06);
+}
+.sg-nav-logo {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 16px;
+}
+.sg-logo-mark { width: 28px; height: 28px; background: var(--teal); border-radius: var(--r8); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; }
+.sg-logo-text { font-family: var(--font-display); font-size: 16px; color: white; }
+.sg-logo-badge { font-size: 10px; font-weight: 600; color: rgba(255,255,255,.4); margin-left: auto; }
+
+.sg-nav-section { padding: 4px 12px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,.25); letter-spacing: .1em; text-transform: uppercase; margin: 16px 0 6px; }
+.sg-nav a {
+  display: block; padding: 7px 20px; font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.55); text-decoration: none;
+  border-radius: 0; transition: all .15s;
+  border-left: 2px solid transparent;
+}
+.sg-nav a:hover { color: white; background: rgba(255,255,255,.06); }
+.sg-nav a.active { color: var(--teal); border-left-color: var(--teal); background: rgba(13,154,127,.08); }
+
+.sg-main { flex: 1; overflow-x: hidden; }
+
+/* ─── SECTION ─── */
+.sg-section {
+  padding: 64px 60px;
+  border-bottom: 1px solid var(--rule);
+  background: white;
+}
+.sg-section:nth-child(even) { background: var(--white); }
+.sg-section-header { margin-bottom: 48px; }
+.sg-section-num { font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+.sg-section-title { font-family: var(--font-display); font-size: 32px; color: var(--ink); margin-bottom: 10px; }
+.sg-section-desc { font-size: 15px; color: var(--ink-50); line-height: 1.65; max-width: 600px; }
+
+.sg-label { font-size: 11px; font-weight: 700; color: var(--ink-20); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+.sg-divider { border: none; border-top: 1px solid var(--rule); margin: 40px 0; }
+.sg-code { font-family: 'Courier New', monospace; font-size: 12px; color: var(--ink-50); background: var(--surface); border: 1px solid var(--rule); border-radius: var(--r4); padding: 2px 6px; }
+
+/* ─── COVER ─── */
+.sg-cover {
+  background: var(--ink);
+  padding: 80px 60px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.sg-cover-eyebrow { font-size: 11px; font-weight: 700; color: var(--teal); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; }
+.sg-cover-title { font-family: var(--font-display); font-size: 48px; color: white; line-height: 1.1; margin-bottom: 12px; }
+.sg-cover-title em { color: var(--teal); font-style: italic; }
+.sg-cover-sub { font-size: 16px; color: rgba(255,255,255,.5); line-height: 1.65; max-width: 540px; margin-bottom: 32px; }
+.sg-cover-meta { display: flex; gap: 24px; }
+.sg-cover-meta-item { font-size: 13px; color: rgba(255,255,255,.35); }
+.sg-cover-meta-item strong { color: rgba(255,255,255,.7); display: block; font-size: 15px; margin-bottom: 2px; }
+
+/* ─── COLORS ─── */
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.color-swatch { border-radius: var(--r12); overflow: hidden; border: 1px solid var(--rule); }
+.color-swatch-block { height: 80px; }
+.color-swatch-info { padding: 10px 12px; background: white; }
+.color-swatch-name { font-size: 12px; font-weight: 600; color: var(--ink); }
+.color-swatch-hex { font-size: 11px; color: var(--ink-50); font-family: monospace; margin-top: 2px; }
+.color-swatch-var { font-size: 10px; color: var(--ink-20); font-family: monospace; margin-top: 1px; }
+
+.color-row { display: flex; gap: 4px; margin-bottom: 16px; }
+.color-step { height: 36px; border-radius: var(--r4); flex: 1; cursor: pointer; transition: transform .15s; }
+.color-step:hover { transform: scaleY(1.1); }
+
+/* ─── TYPOGRAPHY ─── */
+.type-sample { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+.type-sample:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.type-meta { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.type-tag { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: var(--r4); background: var(--surface); color: var(--ink-50); border: 1px solid var(--rule); }
+.type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+/* ─── SPACING ─── */
+.spacing-row { display: flex; align-items: center; gap: 20px; margin-bottom: 12px; }
+.spacing-block { background: var(--teal); border-radius: var(--r4); height: 24px; flex-shrink: 0; }
+.spacing-info { font-size: 13px; }
+.spacing-name { font-weight: 600; color: var(--ink); }
+.spacing-val { color: var(--ink-50); margin-left: 8px; }
+
+/* ─── RADIUS ─── */
+.radius-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.radius-card { background: var(--surface); border: 2px solid var(--rule); width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
+.radius-label { font-size: 12px; color: var(--ink-50); text-align: center; margin-top: 8px; }
+
+/* ─── SHADOWS ─── */
+.shadow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.shadow-card { background: white; height: 80px; border-radius: var(--r12); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--ink-50); }
+
+/* ─── BUTTONS ─── */
+.btn-grid { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
+.btn { font-family: var(--font-body); font-size: 14px; font-weight: 600; padding: 10px 20px; border-radius: var(--r8); cursor: pointer; border: none; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; transition: all .2s; }
+.btn-lg { font-size: 15px; padding: 13px 24px; border-radius: var(--r12); }
+.btn-sm { font-size: 12px; padding: 6px 14px; border-radius: var(--r8); }
+.btn-primary { background: var(--teal); color: white; }
+.btn-primary:hover { background: var(--teal-dark); box-shadow: 0 4px 16px rgba(13,154,127,.3); transform: translateY(-1px); }
+.btn-outline { background: white; color: var(--ink); border: 1.5px solid var(--rule); }
+.btn-outline:hover { border-color: var(--ink-20); box-shadow: var(--shadow-sm); }
+.btn-ghost { background: none; color: var(--ink-50); border: none; }
+.btn-ghost:hover { background: var(--surface); color: var(--ink); }
+.btn-dark { background: var(--ink); color: white; }
+.btn-dark:hover { background: var(--ink-80); }
+.btn-danger { background: #FEF2F2; color: var(--red); border: 1px solid #FECACA; }
+.btn-disabled { background: var(--surface); color: var(--ink-20); cursor: not-allowed; border: 1px solid var(--rule); }
+
+/* ─── FORM ─── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.field { margin-bottom: 20px; }
+.field-label { font-size: 13px; font-weight: 600; color: var(--ink-80); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.field-required { color: var(--red); }
+.field-hint { font-size: 11px; color: var(--ink-50); margin-top: 5px; }
+input, select, textarea {
+  width: 100%; font-family: var(--font-body); font-size: 14px; color: var(--ink);
+  background: white; border: 1.5px solid var(--rule);
+  border-radius: var(--r8); padding: 10px 14px;
+  outline: none; transition: border-color .15s, box-shadow .15s;
+  appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px var(--teal-lt);
+}
+input.error { border-color: var(--red); }
+input.error:focus { box-shadow: 0 0 0 3px #FEF2F2; }
+input.success { border-color: var(--green); }
+textarea { resize: vertical; min-height: 100px; }
+.input-wrap { position: relative; }
+.input-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-20); font-size: 16px; }
+
+/* ─── BADGES / TAGS ─── */
+.badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.badge { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: var(--r99); display: inline-flex; align-items: center; gap: 5px; }
+.badge-teal { background: var(--teal-lt); color: var(--teal); }
+.badge-amber { background: var(--amber-lt); color: var(--amber); }
+.badge-blue { background: var(--blue-lt); color: var(--blue); }
+.badge-red { background: #FEF2F2; color: var(--red); }
+.badge-green { background: #F0FDF4; color: #16A34A; }
+.badge-gray { background: var(--surface); color: var(--ink-50); border: 1px solid var(--rule); }
+.badge-dark { background: var(--ink); color: white; }
+.badge-lg { font-size: 13px; padding: 5px 14px; }
+
+/* ─── CARDS ─── */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: white; border: 1px solid var(--rule); border-radius: var(--r16); padding: 20px; }
+.card:hover { box-shadow: var(--shadow-md); }
+.card-icon { width: 44px; height: 44px; border-radius: var(--r12); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; }
+.card-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.card-desc { font-size: 13px; color: var(--ink-50); line-height: 1.6; }
+
+.supplier-card { display: flex; align-items: center; gap: 12px; background: white; border: 1px solid var(--rule); border-radius: var(--r12); padding: 14px 16px; }
+.sc-avatar { width: 42px; height: 42px; border-radius: var(--r8); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: white; flex-shrink: 0; }
+.sc-info { flex: 1; }
+.sc-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+.sc-meta { font-size: 12px; color: var(--ink-50); margin-top: 2px; }
+.sc-right { text-align: right; }
+.sc-rating { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 3px; justify-content: flex-end; }
+.sc-jobs { font-size: 11px; color: var(--ink-50); }
+
+/* ─── FILTER CHIPS ─── */
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font-size: 13px; font-weight: 500; color: var(--ink-50); border: 1px solid var(--rule); background: var(--surface); padding: 7px 14px; border-radius: var(--r99); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all .15s; }
+.chip:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-lt); }
+.chip.active { border-color: var(--teal); color: var(--teal); background: var(--teal-lt); }
+
+/* ─── ALERTS ─── */
+.alert { display: flex; gap: 12px; padding: 14px 16px; border-radius: var(--r8); border: 1px solid; margin-bottom: 12px; font-size: 13px; line-height: 1.5; }
+.alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.alert-title { font-weight: 600; margin-bottom: 2px; }
+.alert-info { background: var(--blue-lt); border-color: #BFDBFE; color: #1E3A5F; }
+.alert-success { background: #F0FDF4; border-color: #BBF7D0; color: #14532D; }
+.alert-warning { background: var(--amber-lt); border-color: #FDE68A; color: #78350F; }
+.alert-error { background: #FEF2F2; border-color: #FECACA; color: #7F1D1D; }
+
+/* ─── NAV COMPONENT ─── */
+.nav-demo {
+  background: rgba(255,255,255,.92); backdrop-filter: blur(12px);
+  border: 1px solid var(--rule); border-radius: var(--r12);
+  padding: 0 20px; height: 56px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.nav-links-demo { display: flex; align-items: center; gap: 2px; }
+.nav-link { font-size: 13px; font-weight: 500; color: var(--ink-50); padding: 6px 10px; border-radius: var(--r8); cursor: pointer; transition: all .15s; white-space: nowrap; }
+.nav-link:hover { background: var(--surface); color: var(--ink); }
+.nav-link.active { color: var(--ink); font-weight: 600; }
+.nav-cta-demo { display: flex; gap: 6px; }
+
+/* ─── STEP INDICATORS ─── */
+.step-row { display: flex; align-items: center; gap: 0; }
+.step-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; border: 2px solid; transition: all .2s; }
+.step-dot.done { background: var(--teal); border-color: var(--teal); color: white; }
+.step-dot.current { background: white; border-color: var(--teal); color: var(--teal); box-shadow: 0 0 0 4px var(--teal-lt); }
+.step-dot.pending { background: white; border-color: var(--rule); color: var(--ink-20); }
+.step-line { flex: 1; height: 2px; }
+.step-line.done { background: var(--teal); }
+.step-line.pending { background: var(--rule); }
+.step-labels { display: flex; justify-content: space-between; margin-top: 8px; }
+.step-label-item { font-size: 11px; text-align: center; width: 32px; }
+
+/* ─── ICON USAGE ─── */
+.icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 16px; }
+.icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; background: var(--surface); border-radius: var(--r8); border: 1px solid var(--rule); cursor: pointer; transition: all .15s; }
+.icon-item:hover { border-color: var(--teal); background: var(--teal-lt); }
+.icon-emoji { font-size: 24px; }
+.icon-name { font-size: 10px; color: var(--ink-50); text-align: center; }
+
+/* ─── DO / DON'T ─── */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.do-box { border: 2px solid #BBF7D0; border-radius: var(--r12); overflow: hidden; }
+.dont-box { border: 2px solid #FECACA; border-radius: var(--r12); overflow: hidden; }
+.do-header { background: #F0FDF4; padding: 10px 16px; font-size: 12px; font-weight: 700; color: #16A34A; display: flex; align-items: center; gap: 6px; }
+.dont-header { background: #FEF2F2; padding: 10px 16px; font-size: 12px; font-weight: 700; color: var(--red); display: flex; align-items: center; gap: 6px; }
+.do-content { padding: 20px; background: white; }
+
+/* ─── MOTIONS ─── */
+.motion-demo { background: var(--surface); border-radius: var(--r12); padding: 32px; display: flex; gap: 20px; align-items: center; justify-content: center; border: 1px solid var(--rule); }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+.anim-fadein { animation: fadeUp .5s ease forwards; background: var(--teal); color: white; padding: 12px 20px; border-radius: var(--r8); font-size: 13px; font-weight: 600; }
+.anim-pulse { width: 12px; height: 12px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+.skeleton { background: linear-gradient(90deg, var(--rule) 25%, var(--surface) 50%, var(--rule) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--r4); height: 14px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sg-nav { display: none; }
+  .sg-section { padding: 40px 24px; }
+  .color-grid { grid-template-columns: repeat(3, 1fr); }
+  .form-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr 1fr; }
+  .do-dont { grid-template-columns: 1fr; }
+  .radius-grid { grid-template-columns: repeat(3, 1fr); }
+  .type-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="sg-shell">
+
+<!-- ── SIDEBAR NAV ── -->
+<nav class="sg-nav">
+  <div class="sg-nav-logo">
+    <div class="sg-logo-mark">P</div>
+    <span class="sg-logo-text">[LOGO]</span>
+    <span class="sg-logo-badge">v1.0</span>
+  </div>
+  <div class="sg-nav-section">Foundation</div>
+  <a href="#overview" class="active">Overview</a>
+  <a href="#colors">Colours</a>
+  <a href="#typography">Typography</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#radius">Border Radius</a>
+  <a href="#shadows">Shadows</a>
+  <div class="sg-nav-section">Components</div>
+  <a href="#buttons">Buttons</a>
+  <a href="#forms">Form Inputs</a>
+  <a href="#badges">Badges & Tags</a>
+  <a href="#cards">Cards</a>
+  <a href="#chips">Filter Chips</a>
+  <a href="#alerts">Alerts</a>
+  <a href="#nav">Navigation</a>
+  <a href="#steps">Step Indicators</a>
+  <div class="sg-nav-section">Patterns</div>
+  <a href="#icons">Icon Usage</a>
+  <a href="#motion">Motion</a>
+  <a href="#dodont">Do & Don't</a>
+</nav>
+
+<!-- ── MAIN ── -->
+<main class="sg-main">
+
+  <!-- COVER -->
+  <div class="sg-cover" id="overview">
+    <div class="sg-cover-eyebrow">Design System — v1.0</div>
+    <h1 class="sg-cover-title">Style Guide &<br><em>Design Tokens</em></h1>
+    <p class="sg-cover-sub">The single source of truth for all design decisions. Every colour, type style, and component used to build the packaging marketplace.</p>
+    <div class="sg-cover-meta">
+      <div class="sg-cover-meta-item"><strong>Typefaces</strong>DM Serif Display · DM Sans</div>
+      <div class="sg-cover-meta-item"><strong>Brand Colour</strong>#0D9A7F Teal</div>
+      <div class="sg-cover-meta-item"><strong>Tone</strong>Modern · Clean · B2B SaaS</div>
+      <div class="sg-cover-meta-item"><strong>Status</strong>Live — v1.0</div>
+    </div>
+  </div>
+
+  <!-- 1. COLOURS -->
+  <section class="sg-section" id="colors">
+    <div class="sg-section-header">
+      <div class="sg-section-num">01 — Foundation</div>
+      <h2 class="sg-section-title">Colour System</h2>
+      <p class="sg-section-desc">A restrained palette built around a single brand teal. Ink anchors the UI; surface and white provide hierarchy. Amber and blue serve as secondary accents.</p>
+    </div>
+
+    <div class="sg-label">Brand — Teal</div>
+    <div class="color-row" style="margin-bottom:8px;">
+      <div class="color-step" style="background:#E6F6F2;" title="teal-lt"></div>
+      <div class="color-step" style="background:#B3E4D9;" title="teal-mid"></div>
+      <div class="color-step" style="background:#4DB8A9;" title="teal-400"></div>
+      <div class="color-step" style="background:#0D9A7F;" title="teal"></div>
+      <div class="color-step" style="background:#0A7A65;" title="teal-dark"></div>
+      <div class="color-step" style="background:#085041;" title="teal-deep"></div>
+    </div>
+    <div style="display:flex;gap:4px;margin-bottom:28px;">
+      <div style="flex:1;text-align:center;font-size:10px;color:var(--ink-50);">teal-lt</div>
+      <div style="flex:1;text-align:center;font-size:10px;color:var(--ink-50);">teal-mid</div>
+      <div style="flex:1;text-align:center;font-size:10px;color:var(--ink-50);">teal-400</div>
+      <div style="flex:1;text-align:center;font-size:10px;color:var(--ink-50);">teal ★</div>
+      <div style="flex:1;text-align:center;font-size:10px;color:var(--ink-50);">teal-dark</div>
+      <div style="flex:1;text-align:center;font-size:10px;color:var(--ink-50);">teal-deep</div>
+    </div>
+
+    <div class="sg-label">Ink — Neutrals</div>
+    <div class="color-grid" style="margin-bottom:32px;">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#0D1117;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Ink</div><div class="color-swatch-hex">#0D1117</div><div class="color-swatch-var">--ink</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#24292F;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Ink 80</div><div class="color-swatch-hex">#24292F</div><div class="color-swatch-var">--ink-80</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#57606A;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Ink 50</div><div class="color-swatch-hex">#57606A</div><div class="color-swatch-var">--ink-50</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#8C959F;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Ink 20</div><div class="color-swatch-hex">#8C959F</div><div class="color-swatch-var">--ink-20</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#E8EBEE;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Rule</div><div class="color-swatch-hex">#E8EBEE</div><div class="color-swatch-var">--rule</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#F6F8FA;border-top:1px solid #E8EBEE;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Surface</div><div class="color-swatch-hex">#F6F8FA</div><div class="color-swatch-var">--surface</div></div>
+      </div>
+    </div>
+
+    <div class="sg-label">Accents & Status</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#0D9A7F;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Teal (Primary)</div><div class="color-swatch-hex">#0D9A7F</div><div class="color-swatch-var">--teal</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#F0A500;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Amber</div><div class="color-swatch-hex">#F0A500</div><div class="color-swatch-var">--amber</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#1A73E8;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Blue</div><div class="color-swatch-hex">#1A73E8</div><div class="color-swatch-var">--blue</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#22C55E;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Green (Success)</div><div class="color-swatch-hex">#22C55E</div><div class="color-swatch-var">--green</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#EF4444;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Red (Error)</div><div class="color-swatch-hex">#EF4444</div><div class="color-swatch-var">--red</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-swatch-block" style="background:#F97316;"></div>
+        <div class="color-swatch-info"><div class="color-swatch-name">Orange (Warning)</div><div class="color-swatch-hex">#F97316</div><div class="color-swatch-var">--orange</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. TYPOGRAPHY -->
+  <section class="sg-section" id="typography">
+    <div class="sg-section-header">
+      <div class="sg-section-num">02 — Foundation</div>
+      <h2 class="sg-section-title">Typography</h2>
+      <p class="sg-section-desc">Two typefaces working in tandem. DM Serif Display brings character and warmth to headings. DM Sans keeps body text clean, legible, and modern.</p>
+    </div>
+
+    <div class="type-grid">
+      <div>
+        <div class="sg-label" style="margin-bottom:20px;">DM Serif Display — Headings</div>
+        <div class="type-sample">
+          <div class="type-meta">
+            <span class="type-tag">Display</span><span class="type-tag">54px / 1.08</span><span class="type-tag">Hero</span>
+          </div>
+          <div style="font-family:var(--font-display);font-size:54px;line-height:1.08;color:var(--ink);letter-spacing:-.5px;">Find the <em style="color:var(--teal);">right</em><br>supplier.</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">H2</span><span class="type-tag">36px / 1.15</span></div>
+          <div style="font-family:var(--font-display);font-size:36px;line-height:1.15;color:var(--ink);">Section heading style</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">H3</span><span class="type-tag">28px / 1.25</span></div>
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--ink);">Card or panel title</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">Italic</span><span class="type-tag">Accent</span></div>
+          <div style="font-family:var(--font-display);font-size:36px;font-style:italic;color:var(--teal);">Italic teal accent</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sg-label" style="margin-bottom:20px;">DM Sans — Body & UI</div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">Body LG</span><span class="type-tag">17px / 1.6</span></div>
+          <div style="font-size:17px;line-height:1.6;color:var(--ink-50);">Compare verified manufacturers worldwide. Get quotes, review portfolios, and source packaging — free to use.</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">Body MD</span><span class="type-tag">15px / 1.65</span></div>
+          <div style="font-size:15px;line-height:1.65;color:var(--ink-50);">Standard body text for paragraphs, descriptions, and section copy throughout the platform.</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">Body SM</span><span class="type-tag">13px / 1.6</span></div>
+          <div style="font-size:13px;line-height:1.6;color:var(--ink-50);">Secondary descriptions, help text, card captions, and supplementary information.</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">Label</span><span class="type-tag">12px / 700 / uppercase</span></div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);">Section label / eyebrow</div>
+        </div>
+        <div class="type-sample">
+          <div class="type-meta"><span class="type-tag">Micro</span><span class="type-tag">11px / 500</span></div>
+          <div style="font-size:11px;font-weight:500;color:var(--ink-20);">Timestamps, metadata, helper text</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SPACING -->
+  <section class="sg-section" id="spacing" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">03 — Foundation</div>
+      <h2 class="sg-section-title">Spacing Scale</h2>
+      <p class="sg-section-desc">4px base unit. All spacing values are multiples of 4. Use consistently for padding, margin, and gap.</p>
+    </div>
+
+    <div>
+      <div class="spacing-row"><div class="spacing-block" style="width:4px;"></div><div class="spacing-info"><span class="spacing-name">xs — 4px</span><span class="spacing-val">Inline gap, icon padding</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:8px;"></div><div class="spacing-info"><span class="spacing-name">sm — 8px</span><span class="spacing-val">Badge padding, tight gap</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:12px;"></div><div class="spacing-info"><span class="spacing-name">md — 12px</span><span class="spacing-val">Card inner spacing</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:16px;"></div><div class="spacing-info"><span class="spacing-name">lg — 16px</span><span class="spacing-val">Component padding</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:20px;"></div><div class="spacing-info"><span class="spacing-name">xl — 20px</span><span class="spacing-val">Card padding, nav links</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:24px;"></div><div class="spacing-info"><span class="spacing-name">2xl — 24px</span><span class="spacing-val">Section inner gap</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:32px;"></div><div class="spacing-info"><span class="spacing-name">3xl — 32px</span><span class="spacing-val">Between sections</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:48px;"></div><div class="spacing-info"><span class="spacing-name">4xl — 48px</span><span class="spacing-val">Section padding (mobile)</span></div></div>
+      <div class="spacing-row"><div class="spacing-block" style="width:64px;"></div><div class="spacing-info"><span class="spacing-name">5xl — 64px</span><span class="spacing-val">Hero/section padding (desktop)</span></div></div>
+    </div>
+  </section>
+
+  <!-- 4. BORDER RADIUS -->
+  <section class="sg-section" id="radius">
+    <div class="sg-section-header">
+      <div class="sg-section-num">04 — Foundation</div>
+      <h2 class="sg-section-title">Border Radius</h2>
+      <p class="sg-section-desc">Radius values match component hierarchy — smaller for inline elements, larger for cards and containers.</p>
+    </div>
+    <div class="radius-grid">
+      <div>
+        <div class="radius-card" style="border-radius:4px;width:64px;height:64px;background:var(--surface);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink-50);">4</div>
+        <div class="radius-label">r4<br><span style="font-size:10px;color:var(--ink-20);">Tags</span></div>
+      </div>
+      <div>
+        <div class="radius-card" style="border-radius:8px;width:64px;height:64px;background:var(--surface);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink-50);">8</div>
+        <div class="radius-label">r8<br><span style="font-size:10px;color:var(--ink-20);">Inputs, Chips</span></div>
+      </div>
+      <div>
+        <div class="radius-card" style="border-radius:12px;width:64px;height:64px;background:var(--surface);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink-50);">12</div>
+        <div class="radius-label">r12<br><span style="font-size:10px;color:var(--ink-20);">Supplier cards</span></div>
+      </div>
+      <div>
+        <div class="radius-card" style="border-radius:16px;width:64px;height:64px;background:var(--surface);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink-50);">16</div>
+        <div class="radius-label">r16<br><span style="font-size:10px;color:var(--ink-20);">Category cards</span></div>
+      </div>
+      <div>
+        <div class="radius-card" style="border-radius:24px;width:64px;height:64px;background:var(--surface);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink-50);">24</div>
+        <div class="radius-label">r24<br><span style="font-size:10px;color:var(--ink-20);">Panels, Dark strip</span></div>
+      </div>
+      <div>
+        <div class="radius-card" style="border-radius:9999px;width:64px;height:64px;background:var(--surface);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink-50);">∞</div>
+        <div class="radius-label">r99<br><span style="font-size:10px;color:var(--ink-20);">Badges, Pills</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SHADOWS -->
+  <section class="sg-section" id="shadows" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">05 — Foundation</div>
+      <h2 class="sg-section-title">Shadows</h2>
+      <p class="sg-section-desc">Three elevation levels. Use shadow-sm for subtle lift, shadow-md for cards on hover, shadow-lg for hero visuals and modals.</p>
+    </div>
+    <div class="shadow-grid">
+      <div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-sm);">shadow-sm</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--ink-50);">Hover state, subtle lift<br><span class="sg-code">0 1px 3px rgba(0,0,0,.06)</span></div>
+      </div>
+      <div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-md);">shadow-md</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--ink-50);">Card hover, dropdowns<br><span class="sg-code">0 4px 12px rgba(0,0,0,.08)</span></div>
+      </div>
+      <div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-lg);">shadow-lg</div>
+        <div style="margin-top:8px;font-size:12px;color:var(--ink-50);">Hero visuals, modals<br><span class="sg-code">0 12px 32px rgba(0,0,0,.10)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. BUTTONS -->
+  <section class="sg-section" id="buttons">
+    <div class="sg-section-header">
+      <div class="sg-section-num">06 — Components</div>
+      <h2 class="sg-section-title">Buttons</h2>
+      <p class="sg-section-desc">Buttons communicate actions. Use primary for the most important CTA on a page — never two primary buttons side by side.</p>
+    </div>
+
+    <div class="sg-label">Sizes</div>
+    <div class="btn-grid" style="margin-bottom:28px;">
+      <button class="btn btn-primary btn-lg">Large Primary →</button>
+      <button class="btn btn-outline btn-lg">Large Outline</button>
+      <button class="btn btn-primary">Default Primary</button>
+      <button class="btn btn-outline">Default Outline</button>
+      <button class="btn btn-primary btn-sm">Small</button>
+    </div>
+
+    <div class="sg-label">Variants</div>
+    <div class="btn-grid" style="margin-bottom:28px;">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-outline">Outline</button>
+      <button class="btn btn-ghost">Ghost</button>
+      <button class="btn btn-dark">Dark</button>
+      <button class="btn btn-danger">Destructive</button>
+      <button class="btn btn-disabled" disabled>Disabled</button>
+    </div>
+
+    <div class="sg-label">With Icons</div>
+    <div class="btn-grid">
+      <button class="btn btn-primary">Find Suppliers →</button>
+      <button class="btn btn-outline">⊕ Post a Job</button>
+      <button class="btn btn-ghost">← Back</button>
+      <button class="btn btn-dark">Join as Supplier →</button>
+    </div>
+
+    <hr class="sg-divider">
+    <div style="background:var(--surface);border-radius:var(--r12);padding:20px;border:1px solid var(--rule);">
+      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px;">CSS Reference</div>
+      <div style="font-size:12px;line-height:1.8;color:var(--ink-50);">
+        <div><span class="sg-code">border-radius: var(--r8)</span> — Default</div>
+        <div><span class="sg-code">border-radius: var(--r12)</span> — Large CTA</div>
+        <div><span class="sg-code">transition: all .2s</span> — All buttons</div>
+        <div><span class="sg-code">transform: translateY(-1px)</span> — Primary hover</div>
+        <div><span class="sg-code">font-weight: 600</span> — Always semibold</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FORMS -->
+  <section class="sg-section" id="forms" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">07 — Components</div>
+      <h2 class="sg-section-title">Form Inputs</h2>
+      <p class="sg-section-desc">Consistent input styling across all forms — onboarding, search, job posting, and quote forms.</p>
+    </div>
+    <div class="form-grid">
+      <div>
+        <div class="field">
+          <div class="field-label">Company name <span class="field-required">*</span></div>
+          <input type="text" placeholder="Your company name">
+          <div class="field-hint">This will appear on your public profile.</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Email address</div>
+          <div class="input-wrap">
+            <input type="email" placeholder="name@company.com" class="success">
+            <span class="input-icon">✓</span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">Website</div>
+          <input type="text" placeholder="https://yourcompany.com" class="error">
+          <div class="field-hint" style="color:var(--red);">Please enter a valid URL.</div>
+        </div>
+      </div>
+      <div>
+        <div class="field">
+          <div class="field-label">Packaging category</div>
+          <select>
+            <option>Select a category</option>
+            <option>Food & Beverage</option>
+            <option>Cosmetics & Personal Care</option>
+            <option>Pharmaceuticals</option>
+          </select>
+        </div>
+        <div class="field">
+          <div class="field-label">Additional notes</div>
+          <textarea placeholder="Tell buyers about your capabilities, specialties, and what makes your packaging unique..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:13px;color:var(--ink-50);">
+      Focus state: <span class="sg-code">border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-lt);</span>
+    </div>
+  </section>
+
+  <!-- 8. BADGES -->
+  <section class="sg-section" id="badges">
+    <div class="sg-section-header">
+      <div class="sg-section-num">08 — Components</div>
+      <h2 class="sg-section-title">Badges & Tags</h2>
+      <p class="sg-section-desc">Used for supplier certifications, category labels, status indicators, and filter tags. Always pill-shaped (r99).</p>
+    </div>
+
+    <div class="sg-label" style="margin-bottom:12px;">Certification Badges</div>
+    <div class="badge-row" style="margin-bottom:24px;">
+      <span class="badge badge-teal">FSC Certified</span>
+      <span class="badge badge-blue">ISO 9001</span>
+      <span class="badge badge-amber">Food-Grade</span>
+      <span class="badge badge-green">BRC</span>
+      <span class="badge badge-teal">GMP</span>
+      <span class="badge badge-blue">Sedex</span>
+    </div>
+
+    <div class="sg-label" style="margin-bottom:12px;">Status Badges</div>
+    <div class="badge-row" style="margin-bottom:24px;">
+      <span class="badge badge-green">● New</span>
+      <span class="badge badge-blue">In Review</span>
+      <span class="badge badge-amber">Pending</span>
+      <span class="badge badge-teal">Responded</span>
+      <span class="badge badge-red">Declined</span>
+      <span class="badge badge-gray">Archived</span>
+    </div>
+
+    <div class="sg-label" style="margin-bottom:12px;">Industry Tags</div>
+    <div class="badge-row" style="margin-bottom:24px;">
+      <span class="badge badge-gray">Food &amp; Beverage</span>
+      <span class="badge badge-gray">Cosmetics</span>
+      <span class="badge badge-gray">E-commerce</span>
+      <span class="badge badge-gray">Pharma</span>
+      <span class="badge badge-dark">Verified Supplier</span>
+      <span class="badge badge-teal badge-lg">⭐ Top Rated</span>
+    </div>
+  </section>
+
+  <!-- 9. CARDS -->
+  <section class="sg-section" id="cards" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">09 — Components</div>
+      <h2 class="sg-section-title">Cards</h2>
+      <p class="sg-section-desc">Three card patterns used across the platform: category cards, supplier cards, and feature/why-us cards.</p>
+    </div>
+
+    <div class="sg-label" style="margin-bottom:12px;">Category Card</div>
+    <div class="card-grid" style="margin-bottom:32px;">
+      <a href="#" style="text-decoration:none;" class="card" style="display:flex;align-items:center;gap:14px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="card-icon" style="background:#FFF0E6;">🥘</div>
+          <div><div class="card-title">Food & Beverage</div><div style="font-size:12px;color:var(--ink-50);">340 suppliers</div></div>
+        </div>
+      </a>
+      <a href="#" style="text-decoration:none;" class="card">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="card-icon" style="background:#F5E6FF;">💄</div>
+          <div><div class="card-title">Cosmetics & Care</div><div style="font-size:12px;color:var(--ink-50);">218 suppliers</div></div>
+        </div>
+      </a>
+      <a href="#" style="text-decoration:none;" class="card">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div class="card-icon" style="background:#E6F3FF;">🛒</div>
+          <div><div class="card-title">E-commerce</div><div style="font-size:12px;color:var(--ink-50);">185 suppliers</div></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="sg-label" style="margin-bottom:12px;">Supplier Card</div>
+    <div style="max-width:480px;margin-bottom:32px;">
+      <div class="supplier-card">
+        <div class="sc-avatar" style="background:var(--teal);">GP</div>
+        <div class="sc-info">
+          <div class="sc-name">GreenPack Solutions</div>
+          <div class="sc-meta">Pouches · Eco Materials · AU/NZ</div>
+          <div style="margin-top:5px;"><span class="badge badge-teal" style="font-size:10px;">FSC Certified</span></div>
+        </div>
+        <div class="sc-right">
+          <div class="sc-rating">★ 4.9</div>
+          <div class="sc-jobs">142 jobs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-label" style="margin-bottom:12px;">Feature / Why-Us Card</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background:var(--teal-lt);">🌐</div>
+        <div class="card-title">Global Sourcing</div>
+        <div class="card-desc">Access packaging manufacturers from 48 countries, all in one place.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#F0FDF4;">✅</div>
+        <div class="card-title">Verified & Reliable</div>
+        <div class="card-desc">All suppliers are manually reviewed for quality and certifications.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:var(--blue-lt);">🔒</div>
+        <div class="card-title">Secure & Free</div>
+        <div class="card-desc">Your data is safe. Posting jobs and requesting quotes is always free.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FILTER CHIPS -->
+  <section class="sg-section" id="chips">
+    <div class="sg-section-header">
+      <div class="sg-section-num">10 — Components</div>
+      <h2 class="sg-section-title">Filter Chips</h2>
+      <p class="sg-section-desc">Used in the search filter bar and supplier discovery flow. Pill-shaped, with teal active state.</p>
+    </div>
+    <div class="sg-label" style="margin-bottom:12px;">Default state</div>
+    <div class="chip-row" style="margin-bottom:16px;">
+      <button class="chip">Packaging Type</button>
+      <button class="chip">Material</button>
+      <button class="chip">MOQ</button>
+      <button class="chip">Certification</button>
+      <button class="chip">Region</button>
+      <button class="chip">Lead Time</button>
+    </div>
+    <div class="sg-label" style="margin-bottom:12px;">Active / selected state</div>
+    <div class="chip-row">
+      <button class="chip active">Food & Beverage ✕</button>
+      <button class="chip active">Australia ✕</button>
+      <button class="chip active">FSC Certified ✕</button>
+      <button class="chip">+ More Filters</button>
+    </div>
+  </section>
+
+  <!-- 11. ALERTS -->
+  <section class="sg-section" id="alerts" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">11 — Components</div>
+      <h2 class="sg-section-title">Alerts & Notices</h2>
+      <p class="sg-section-desc">Four states: info, success, warning, error. Used for form validation, system notices, and onboarding guidance.</p>
+    </div>
+    <div class="alert alert-info">
+      <span class="alert-icon">ℹ️</span>
+      <div><div class="alert-title">Profile under review</div>Our team will review your profile within 48 hours. You'll be notified by email once approved.</div>
+    </div>
+    <div class="alert alert-success">
+      <span class="alert-icon">✅</span>
+      <div><div class="alert-title">Profile approved!</div>Your supplier profile is now visible and searchable by buyers on the marketplace.</div>
+    </div>
+    <div class="alert alert-warning">
+      <span class="alert-icon">⚠️</span>
+      <div><div class="alert-title">Profile incomplete — 78%</div>Complete your portfolio and certifications to improve your visibility in search results.</div>
+    </div>
+    <div class="alert alert-error">
+      <span class="alert-icon">✕</span>
+      <div><div class="alert-title">Certificate upload failed</div>The file format is not supported. Please upload PDF, JPG, or PNG (max 10MB).</div>
+    </div>
+  </section>
+
+  <!-- 12. NAV -->
+  <section class="sg-section" id="nav">
+    <div class="sg-section-header">
+      <div class="sg-section-num">12 — Components</div>
+      <h2 class="sg-section-title">Navigation</h2>
+      <p class="sg-section-desc">Sticky top nav with frosted glass effect. Height 60px. Left: logo, Centre: links, Right: auth CTAs.</p>
+    </div>
+    <div class="nav-demo">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="width:28px;height:28px;background:var(--ink);border-radius:var(--r8);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;">P</div>
+        <span style="font-family:var(--font-display);font-size:16px;color:var(--ink);">[LOGO]</span>
+      </div>
+      <div class="nav-links-demo">
+        <span class="nav-link active">Find Suppliers ↓</span>
+        <span class="nav-link">Post a Job</span>
+        <span class="nav-link">How it Works</span>
+        <span class="nav-link">For Suppliers ↓</span>
+      </div>
+      <div class="nav-cta-demo">
+        <button class="btn btn-ghost btn-sm">Log in</button>
+        <button class="btn btn-primary btn-sm">Sign up</button>
+      </div>
+    </div>
+    <div style="margin-top:16px;font-size:12px;color:var(--ink-50);">
+      <span class="sg-code">background: rgba(255,255,255,.92)</span> ·
+      <span class="sg-code">backdrop-filter: blur(12px)</span> ·
+      <span class="sg-code">height: 60px</span> ·
+      <span class="sg-code">position: sticky; top: 0; z-index: 100</span>
+    </div>
+  </section>
+
+  <!-- 13. STEP INDICATORS -->
+  <section class="sg-section" id="steps" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">13 — Components</div>
+      <h2 class="sg-section-title">Step Indicators</h2>
+      <p class="sg-section-desc">Used in supplier onboarding (10 steps) and buyer job post flow. Three states: done (teal filled), current (teal outline), pending (gray).</p>
+    </div>
+    <div style="max-width:500px;">
+      <div class="step-row">
+        <div class="step-dot done">✓</div>
+        <div class="step-line done"></div>
+        <div class="step-dot done">✓</div>
+        <div class="step-line done"></div>
+        <div class="step-dot current">3</div>
+        <div class="step-line pending"></div>
+        <div class="step-dot pending">4</div>
+        <div class="step-line pending"></div>
+        <div class="step-dot pending">5</div>
+      </div>
+      <div class="step-labels">
+        <div class="step-label-item" style="font-size:10px;color:var(--teal);">Account</div>
+        <div class="step-label-item" style="font-size:10px;color:var(--teal);">Company</div>
+        <div class="step-label-item" style="font-size:10px;color:var(--teal);font-weight:600;">Types</div>
+        <div class="step-label-item" style="font-size:10px;color:var(--ink-20);">Materials</div>
+        <div class="step-label-item" style="font-size:10px;color:var(--ink-20);">Industries</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. ICONS -->
+  <section class="sg-section" id="icons">
+    <div class="sg-section-header">
+      <div class="sg-section-num">14 — Patterns</div>
+      <h2 class="sg-section-title">Icon Usage</h2>
+      <p class="sg-section-desc">Icons are used as visual anchors for categories and features. Emoji-style icons on a soft pastel background. Each industry has a dedicated colour.</p>
+    </div>
+    <div class="icon-grid">
+      <div class="icon-item"><div class="icon-emoji">🥘</div><div class="icon-name">Food &<br>Bev</div></div>
+      <div class="icon-item"><div class="icon-emoji">💄</div><div class="icon-name">Cosmetics</div></div>
+      <div class="icon-item"><div class="icon-emoji">🛒</div><div class="icon-name">E-commerce</div></div>
+      <div class="icon-item"><div class="icon-emoji">💊</div><div class="icon-name">Pharma</div></div>
+      <div class="icon-item"><div class="icon-emoji">🏥</div><div class="icon-name">Healthcare</div></div>
+      <div class="icon-item"><div class="icon-emoji">🌱</div><div class="icon-name">Agriculture</div></div>
+      <div class="icon-item"><div class="icon-emoji">⚙️</div><div class="icon-name">Industrial</div></div>
+      <div class="icon-item"><div class="icon-emoji">📱</div><div class="icon-name">Electronics</div></div>
+      <div class="icon-item"><div class="icon-emoji">🚗</div><div class="icon-name">Automotive</div></div>
+      <div class="icon-item"><div class="icon-emoji">🏠</div><div class="icon-name">Home &<br>Garden</div></div>
+      <div class="icon-item"><div class="icon-emoji">🐾</div><div class="icon-name">Pet<br>Products</div></div>
+      <div class="icon-item"><div class="icon-emoji">💎</div><div class="icon-name">Luxury</div></div>
+    </div>
+    <div style="margin-top:20px;font-size:13px;color:var(--ink-50);line-height:1.7;">
+      Icon container: <span class="sg-code">width: 44px; height: 44px; border-radius: var(--r12)</span><br>
+      Background: unique pastel per category (e.g. Food → <span class="sg-code">#FFF0E6</span>, Cosmetics → <span class="sg-code">#F5E6FF</span>)
+    </div>
+  </section>
+
+  <!-- 15. MOTION -->
+  <section class="sg-section" id="motion" style="background:var(--surface);">
+    <div class="sg-section-header">
+      <div class="sg-section-num">15 — Patterns</div>
+      <h2 class="sg-section-title">Motion & Animation</h2>
+      <p class="sg-section-desc">Subtle, purposeful motion. One orchestrated page-load sequence, hover states, and loading patterns.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div>
+        <div class="sg-label" style="margin-bottom:12px;">Fade Up (Page load)</div>
+        <div class="motion-demo">
+          <button onclick="this.closest('.motion-demo').querySelector('.anim-fadein').style.animation='none';setTimeout(()=>{this.closest('.motion-demo').querySelector('.anim-fadein').style.animation='fadeUp .5s ease forwards'},10)" class="btn btn-outline btn-sm" style="position:absolute;opacity:.6;font-size:11px;">↺ Replay</button>
+          <div class="anim-fadein" style="position:relative;">Hero element</div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-50);margin-top:8px;"><span class="sg-code">animation: fadeUp .6s ease forwards</span><br>Stagger with <span class="sg-code">animation-delay: .1s</span> increments</div>
+      </div>
+      <div>
+        <div class="sg-label" style="margin-bottom:12px;">Live Pulse (Activity)</div>
+        <div class="motion-demo" style="flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="anim-pulse"></div>
+            <span style="font-size:13px;font-weight:500;color:var(--ink);">Live Activity</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-50);margin-top:8px;"><span class="sg-code">animation: pulse 2s infinite</span><br>Used on live feed indicator dot</div>
+      </div>
+      <div>
+        <div class="sg-label" style="margin-bottom:12px;">Skeleton Loading</div>
+        <div class="motion-demo" style="flex-direction:column;gap:8px;align-items:stretch;">
+          <div class="skeleton" style="width:100%;height:14px;border-radius:4px;"></div>
+          <div class="skeleton" style="width:75%;height:14px;border-radius:4px;"></div>
+          <div class="skeleton" style="width:90%;height:14px;border-radius:4px;"></div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-50);margin-top:8px;">Shimmer effect for loading states<br><span class="sg-code">background-size: 200% 100%</span></div>
+      </div>
+    </div>
+
+    <hr class="sg-divider">
+    <div class="sg-label" style="margin-bottom:12px;">Transition Defaults</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;color:var(--ink-50);line-height:1.8;">
+      <div>
+        <div>Hover (colours, bg) → <span class="sg-code">transition: .15s</span></div>
+        <div>Hover (shadow, transform) → <span class="sg-code">transition: .2s</span></div>
+        <div>Page load stagger → <span class="sg-code">.1s, .2s, .3s, .4s</span></div>
+      </div>
+      <div>
+        <div>Button hover lift → <span class="sg-code">transform: translateY(-1px)</span></div>
+        <div>Card hover lift → <span class="sg-code">transform: translateY(-2px)</span></div>
+        <div>Easing → <span class="sg-code">ease</span> (default throughout)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. DO & DON'T -->
+  <section class="sg-section" id="dodont">
+    <div class="sg-section-header">
+      <div class="sg-section-num">16 — Patterns</div>
+      <h2 class="sg-section-title">Do & Don't</h2>
+      <p class="sg-section-desc">Key rules for maintaining visual consistency across the platform.</p>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-header">✓ Do</div>
+        <div class="do-content">
+          <div style="margin-bottom:12px;font-size:13px;color:var(--ink-50);">Use teal as the <strong style="color:var(--ink);">single primary action colour</strong></div>
+          <button class="btn btn-primary">Find Suppliers →</button>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-header">✕ Don't</div>
+        <div class="do-content">
+          <div style="margin-bottom:12px;font-size:13px;color:var(--ink-50);">Use multiple bright colours for CTAs on the same row</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn" style="background:var(--teal);color:white;">Find →</button>
+            <button class="btn" style="background:var(--blue);color:white;">Post →</button>
+            <button class="btn" style="background:var(--amber);color:white;">Join →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont" style="margin-top:16px;">
+      <div class="do-box">
+        <div class="do-header">✓ Do</div>
+        <div class="do-content">
+          <div style="margin-bottom:12px;font-size:13px;color:var(--ink-50);">Use DM Serif Display for headings with italic teal accent</div>
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--ink);">Find the <em style="color:var(--teal);">right</em> supplier.</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-header">✕ Don't</div>
+        <div class="do-content">
+          <div style="margin-bottom:12px;font-size:13px;color:var(--ink-50);">Use DM Sans for headings or skip the italic accent</div>
+          <div style="font-size:28px;font-weight:700;color:var(--ink);">Find the right supplier.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="do-dont" style="margin-top:16px;">
+      <div class="do-box">
+        <div class="do-header">✓ Do</div>
+        <div class="do-content">
+          <div style="margin-bottom:12px;font-size:13px;color:var(--ink-50);">Use soft pastel backgrounds for category icons</div>
+          <div style="display:flex;gap:8px;">
+            <div style="width:44px;height:44px;background:#FFF0E6;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🥘</div>
+            <div style="width:44px;height:44px;background:#F5E6FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">💄</div>
+            <div style="width:44px;height:44px;background:#E6F3FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🛒</div>
+          </div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-header">✕ Don't</div>
+        <div class="do-content">
+          <div style="margin-bottom:12px;font-size:13px;color:var(--ink-50);">Use the same colour for all category icons</div>
+          <div style="display:flex;gap:8px;">
+            <div style="width:44px;height:44px;background:var(--teal-lt);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🥘</div>
+            <div style="width:44px;height:44px;background:var(--teal-lt);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">💄</div>
+            <div style="width:44px;height:44px;background:var(--teal-lt);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">🛒</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+// Sidebar active state on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.sg-nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
